@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <h1>📑 Tab Manager</h1>
+        <label class="theme-toggle">
+          <input type="checkbox" id="theme-toggle" />
+          <span class="theme-slider">
+            <span class="theme-icon">🌙</span>
+            <span class="theme-icon">☀️</span>
+          </span>
+        </label>
+      </div>
+    </header>
+
+    <!-- Memory Stats -->
+    <section class="stats-section">
+      <h2>Memory Stats</h2>
+      <div id="memory-stats" class="memory-stats">
+        <div class="stat-item">
+          <span class="stat-label">Active Tabs:</span>
+          <span class="stat-value" id="active-tabs">-</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Suspended:</span>
+          <span class="stat-value" id="suspended-tabs">-</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Memory Saved:</span>
+          <span class="stat-value" id="saved-memory">-</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Settings -->
+    <section class="settings-section">
+      <h2>Settings</h2>
+      <div class="form-group">
+        <label>
+          <input type="checkbox" id="auto-suspend"> Auto-suspend inactive tabs
+        </label>
+      </div>
+      <div class="form-group">
+        <label>
+          Suspend after:
+          <input type="number" id="suspend-minutes" min="1" max="120" value="15"> minutes
+        </label>
+      </div>
+      <div class="form-group">
+        <button id="suspend-all-btn" class="btn btn-secondary">Suspend All Inactive</button>
+      </div>
+    </section>
+
+    <!-- Save Session -->
+    <section class="session-section">
+      <h2>Save Current Session</h2>
+      <div class="form-group">
+        <input type="text" id="session-name" placeholder="Session name (optional)" class="input">
+        <button id="save-session-btn" class="btn btn-primary">Save Session</button>
+      </div>
+    </section>
+
+    <!-- Saved Sessions -->
+    <section class="sessions-section collapsible-section">
+      <div class="section-header" id="sessions-header">
+        <h2>Saved Sessions</h2>
+        <button class="collapse-toggle" aria-label="Toggle sessions">
+          <span class="arrow-icon">▶</span>
+        </button>
+      </div>
+      <div class="section-content" id="sessions-content">
+        <div id="sessions-list" class="sessions-list"></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

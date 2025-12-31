@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab Suspended</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .suspended-container {
+      background: white;
+      border-radius: 20px;
+      padding: 60px 40px;
+      text-align: center;
+      max-width: 500px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .url-info {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #555;
+      word-break: break-all;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 15px 30px;
+      background: #11998e;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: all 0.3s;
+      cursor: pointer;
+      border: none;
+      font-size: 16px;
+    }
+
+    .button:hover {
+      background: #0d7a72;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <div class="suspended-container">
+    <div class="icon">💤</div>
+    <h1>Tab Suspended</h1>
+    <p>This tab has been suspended to save memory and improve performance.</p>
+    <div class="url-info" id="url-info"></div>
+    <button class="button" id="restore-btn">Restore Tab</button>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const url = params.get('url');
+    const title = params.get('title');
+
+    const urlInfoEl = document.getElementById('url-info');
+    const restoreBtn = document.getElementById('restore-btn');
+
+    if (title) {
+      urlInfoEl.innerHTML = `<strong>${escapeHtml(title)}</strong><br><small>${escapeHtml(url)}</small>`;
+    } else {
+      urlInfoEl.textContent = url;
+    }
+
+    restoreBtn.addEventListener('click', async () => {
+      // Send URL to background script to restore tab
+      chrome.runtime.sendMessage({
+        action: 'restoreTab',
+        url: url
+      }, () => {
+        // Navigate to the original URL
+        window.location.href = url;
+      });
+    });
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+  </script>
+</body>
+</html>
