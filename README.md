@@ -1,6 +1,6 @@
-# 📑 Tab Manager - Chrome Extension
+#  Tab Manager - Chrome Extension
 
-A lightweight and efficient Chrome extension designed to help users organize, manage, and declutter their browser tabs. This tool is perfect for power users who often find themselves overwhelmed by too many open windows. 🚀
+A lightweight and efficient Chrome extension designed to help users organize, manage, and declutter their browser tabs. This tool is perfect for power users who often find themselves overwhelmed by too many open windows. 
 
 ---
 
@@ -39,7 +39,7 @@ To run this extension locally for development or personal use, follow these step
     * Click the **Load unpacked** button.
     * Select the folder where you cloned/downloaded the repository.
 5.  **Start Managing:**
-    * The **Tab Manager** icon should now appear in your extension toolbar! 🧩
+    * The **Tab Manager** icon should now appear in your extension toolbar! 
 
 ---
 
