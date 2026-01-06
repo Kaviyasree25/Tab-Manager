@@ -53,4 +53,9 @@ Tab-Manager/
 ├── styles.css       # Custom styling for the popup
 └── assets/          # Icons and images
 
+```
+<img width="1918" height="1016" alt="Screenshot 2026-01-06 223840" src="https://github.com/user-attachments/assets/31c6f567-e93e-4be6-bf88-00068de9353e" />
+ <img width="1918" height="1018" alt="Screenshot 2026-01-06 223906" src="https://github.com/user-attachments/assets/c5bbcd15-7f87-4d89-b226-725890c99394" />
+
+
 
